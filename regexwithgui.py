@@ -31,7 +31,13 @@ def testmatchfunction():
             T.tag_add("allred","1.0",end)
             T.tag_config("allred",background="red")
             T.insert(tk.END,"\nNO MATCH FOUND")
-        else:    
+        else:
+            checkbox1=var1.get()
+            checkbox2=var2.get()
+    
+            if checkbox1== 1 or checkbox2== 0:
+                del matchposition[1:]  
+            print(matchposition)    
             for i in matchposition :
                 start="1"+"."+str(i)
                 end="1."+str(i+len(check))
@@ -70,6 +76,13 @@ testmatch_btn=tk.Button(root,text ='TEST MATCH', command = lambda : testmatchfun
 replace1_btn=tk.Button(root,text ='REPLACE',command = lambda : replacefunction(),relief=RAISED,height=1,width=42,bg="grey")
 help_btn=tk.Button(root,text ='HELP',command = lambda : help_messagebox(),relief=RAISED,height=1,width=85,bg="grey")
 
+
+var1 = tk.IntVar()
+var2 = tk.IntVar()
+c1 = tk.Checkbutton(root, text='First occurence',variable=var1, onvalue=1, offvalue=0, command = lambda : testmatchfunction())
+c2 = tk.Checkbutton(root, text='All occurence',variable=var2, onvalue=1, offvalue=0, command = lambda : testmatchfunction())
+
+
 help_btn.grid(row=0,column=0,sticky=W,columnspan=2)
 check_label.grid(row=1,column=0) 
 check_entry.grid(row=1,column=1,sticky=W) 
@@ -79,6 +92,8 @@ replace_label.grid(row=3,column=0)
 replace_entry.grid(row=3,column=1,sticky=W) 
 testmatch_btn.grid(row=4,column=0,sticky=W)
 replace1_btn.grid(row=4,column=1,sticky=W)
-T.grid(row=5,column=0,sticky=W)
-T2.grid(row=5,column=1,sticky=W)
+c1.grid(row=5,column=0,sticky=W)
+c2.grid(row=5,column=1,sticky=W)
+T.grid(row=6,column=0,sticky=W)
+T2.grid(row=6,column=1,sticky=W)
 root.mainloop()
