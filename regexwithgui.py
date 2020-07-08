@@ -24,27 +24,24 @@ def testmatchfunction():
         check=check_entry.get() 
         paragraph=paragraph_entry.get() 
         T.insert(tk.END,paragraph)
-        matches=re.finditer(check,paragraph)
-        matchposition=[match.start() for match in matches]
-        if(len(matchposition)==0):
+        p = re.compile(check) 
+        k=p.findall(paragraph) 
+        print(k)
+        if(len(k)==0):
             end="1."+str(len(paragraph))
             T.tag_add("allred","1.0",end)
             T.tag_config("allred",background="red")
             T.insert(tk.END,"\nNO MATCH FOUND")
-        else:
-            checkbox1=var1.get()
-            checkbox2=var2.get()
-    
-            if checkbox1== 1 or checkbox2== 0:
-                del matchposition[1:]  
-            print(matchposition)    
+        for j in k :
+            matches=re.finditer(j,paragraph)
+            matchposition=[match.start() for match in matches]
             for i in matchposition :
                 start="1"+"."+str(i)
                 end="1."+str(i+len(check))
                 T.tag_add("change",start,end)
                 T.tag_config("change",background="green")
-            T.insert(tk.END,"\nMATCH FOUND,HURRAY")
-            T.insert(tk.END,"\nTOTAL NUMBER OF MATCHES ARE "+str(len(matchposition)))       
+        T.insert(tk.END,"\nMATCH FOUND,HURRAY")
+        T.insert(tk.END,"\nTOTAL NUMBER OF MATCHES ARE "+str(len(k)))       
 def help_messagebox():
     helptext="REGEX is a sequence of characters that define a search pattern. Usually such patterns are used by string searching algorithms for find or find and replace operations on strings"
     messagebox.showinfo("HELP",helptext)            
