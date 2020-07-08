@@ -75,10 +75,10 @@ replace1_btn=tk.Button(root,text ='REPLACE',command = lambda : replacefunction()
 help_btn=tk.Button(root,text ='HELP',command = lambda : help_messagebox(),relief=RAISED,height=1,width=85,bg="grey")
 
 
-var1 = tk.IntVar()
+'''var1 = tk.IntVar()
 var2 = tk.IntVar()
 c1 = tk.Checkbutton(root, text='First occurence',variable=var1, onvalue=1, offvalue=0, command = lambda : testmatchfunction())
-c2 = tk.Checkbutton(root, text='All occurence',variable=var2, onvalue=1, offvalue=0, command = lambda : testmatchfunction())
+c2 = tk.Checkbutton(root, text='All occurence',variable=var2, onvalue=1, offvalue=0, command = lambda : testmatchfunction())'''
 
 
 help_btn.grid(row=0,column=0,sticky=W,columnspan=2)
@@ -90,8 +90,8 @@ replace_label.grid(row=3,column=0)
 replace_entry.grid(row=3,column=1,sticky=W) 
 testmatch_btn.grid(row=4,column=0,sticky=W)
 replace1_btn.grid(row=4,column=1,sticky=W)
-c1.grid(row=5,column=0,sticky=W)
-c2.grid(row=5,column=1,sticky=W)
+'''c1.grid(row=5,column=0,sticky=W)
+c2.grid(row=5,column=1,sticky=W)'''
 T.grid(row=6,column=0,sticky=W)
 T2.grid(row=6,column=1,sticky=W)
 root.mainloop()
