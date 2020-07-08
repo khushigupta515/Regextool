@@ -26,7 +26,8 @@ def testmatchfunction():
         T.insert(tk.END,paragraph)
         p = re.compile(check) 
         k=p.findall(paragraph) 
-        print(k)
+        T.insert(tk.END,"\nTHE FOLLOWING ARE THE MATCHES:\n")
+        T.insert(tk.END,k)
         if(len(k)==0):
             end="1."+str(len(paragraph))
             T.tag_add("allred","1.0",end)
