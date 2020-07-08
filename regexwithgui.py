@@ -9,12 +9,20 @@ def replacefunction():
         T2.delete("1.0", tk.END)
         check=check_entry.get() 
         paragraph=paragraph_entry.get() 
+        paragraph2=paragraph
         replace=replace_entry.get() 
-        final=re.sub(check, replace, paragraph)
-        T2.insert(tk.END,"OUTPUT AFTER REPLACE:\n")
+        p = re.compile(check) 
+        k=p.findall(paragraph) 
+        T2.insert(tk.END,"\nTHE FOLLOWING ARE THE MATCHES:\n")
+        T2.insert(tk.END,k)
+        for i in k :
+           final=re.sub(i, replace, paragraph)
+           paragraph=final
+        
+        T2.insert(tk.END,"\nOUTPUT AFTER REPLACE:\n")
         if(replace==''):
             T2.insert(tk.END,"REPLACE WITH IS EMPTY")
-        elif(final == paragraph):
+        elif(final == paragraph2):
             T2.insert(tk.END,final+"\nString is same as before replace")
             
         else:
